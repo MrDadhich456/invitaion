@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Scene | Farewell</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050505;
+            color: #d4d4d4;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            opacity: 0.04;
+            pointer-events: none;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        }
+        .reveal-content { display: none; }
+        .reveal-content.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+
+    <div class="grain"></div>
+
+    <div class="fixed inset-0 pointer-events-none opacity-20">
+        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-yellow-900/30 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-900/20 blur-[120px] rounded-full"></div>
+    </div>
+
+    <main class="relative z-10 max-w-2xl w-full text-center space-y-12">
+        
+        <header class="space-y-4">
+            <p class="text-[10px] tracking-[0.8em] uppercase text-yellow-500 opacity-60">
+                A Moment Captured in Time
+            </p>
+            <h1 class="text-5xl md:text-7xl font-light tracking-tighter text-white serif">
+                The Shortest <span class="italic text-gray-400">Season.</span>
+            </h1>
+        </header>
+
+        <section class="space-y-8 text-lg md:text-xl font-light leading-[1.8] text-gray-400 serif">
+            <p class="fade-in" style="transition-delay: 1s;">
+                We didn’t have the years, the seasons, or the start,<br/>
+                <span class="text-white/70">Just a few fast months that redefined the heart.</span>
+            </p>
+
+            <p class="fade-in" style="transition-delay: 2.5s;">
+                A bond forged in the sunset of your stay,<br/>
+                Stronger than the echoes of a thousand days.
+            </p>
+
+            <p class="fade-in italic text-yellow-500/60" style="transition-delay: 4s;">
+                "The clock is ticking louder as the finish line appears,<br/>
+                Toasting to the months that felt like many years."
+            </p>
+        </section>
+
+        <div class="pt-8 fade-in" style="transition-delay: 5.5s;">
+            <div id="lock-container">
+                <button id="unlock-btn" class="group relative px-10 py-4 transition-all duration-700 hover:tracking-[0.2em]">
+                    <span class="relative z-10 text-[10px] tracking-[0.4em] uppercase text-gray-300">
+                        Unlock The Coordinates
+                    </span>
+                    <div class="absolute inset-0 border border-white/10 group-hover:border-yellow-600/50 transition-all duration-500"></div>
+                </button>
+            </div>
+
+            <div id="reveal-container" class="reveal-content space-y-4">
+                <div class="inline-block p-8 border border-white/5 bg-white/[0.02] backdrop-blur-xl">
+                    <p class="text-yellow-500 font-sans text-[10px] tracking-[0.4em] uppercase mb-2">Monday • 4:00 PM</p>
+                    <p class="text-2xl font-light text-white italic serif">"Somewhere with a Soul."</p>
+                    <div class="w-12 h-[1px] bg-yellow-600/40 mx-auto my-4"></div>
+                   
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-8 text-[9px] tracking-[0.8em] uppercase text-gray-600 opacity-50">
+        Aaryan & The Crew
+    </footer>
+
+    <div class="fixed right-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-8 opacity-20 text-[10px] tracking-widest uppercase items-center">
+        <span style="writing-mode: vertical-rl;" class="rotate-180">Unbreakable Bonds</span>
+        <div class="h-20 w-[1px] bg-white"></div>
+        <span style="writing-mode: vertical-rl;">Farewell 2026</span>
+    </div>
+
+    <script>
+        // Simple script to handle the reveal
+        document.getElementById('unlock-btn').addEventListener('click', function() {
+            document.getElementById('lock-container').style.display = 'none';
+            document.getElementById('reveal-container').classList.add('active');
+        });
+
+        // Simple fade-in animation logic
+        document.querySelectorAll('.fade-in').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+            el.style.transition = 'all 1.5s ease-out';
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, (i + 1) * 1200);
+        });
+    </script>
+</body>
+</html>
